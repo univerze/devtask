@@ -3,11 +3,24 @@
 It is a sample node application to save and retrieve data from a local mongoDB database via RESTful endpoints.
 
 ## Pre-requisites
-- NodeJS and NPM [https://nodejs.org/en/](https://nodejs.org/en/)
-- MongoDB [MongoDB Local Server](https://www.mongodb.com/download-center?jmp=nav#community)
+- Docker CE [Download](https://www.docker.com/community-edition)
 
-## How to run
-First start the mongodb in your terminal
+## How to run with Docker
+Make sure Docker daemon is running, in terminal run:
+
+```bash
+docker-compose up
+```
+
+To stop
+```bash
+docker-compose down --rmi=all
+```
+
+## Without Docker
+Install [NodeJS](https://nodejs.org/en/) and [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
+
+Start the mongodb in your terminal
 
 ```bash
 mongod
@@ -24,6 +37,17 @@ npm start
 ```
 
 You should see the message `app listening on port 3000` now you can send data to [http://localhost:3000/medicines](http://localhost:3000/medicines).
+
+## How to use
+
+Now  you can use Postman or cUrl to send data:
+
+```bash
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"name":"test","manufacturer":"company","stock":1}' \
+  http://localhost:3000/medicines
+```
 
 ## Ideas
 

@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // connect to local db
-mongoose.connect('mongodb://localhost/devtest');
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost/devtest');
 
 // use the bodyparser to get params from POST requests
 app.use(bodyParser.json());
